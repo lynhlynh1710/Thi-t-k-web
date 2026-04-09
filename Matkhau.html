@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiem tra mat khau</title>
+</head>
+<body>
+
+<script>
+function kiemTraMatKhau(password) {
+    if (password.length < 8) {
+        return "Mật khẩu phải có ít nhất 8 ký tự!";
+    }
+
+    if (!/[A-Z]/.test(password)) {
+        return "Mật khẩu phải chứa ít nhất 1 chữ hoa!";
+    }
+
+    if (!/[a-z]/.test(password)) {
+        return "Mật khẩu phải chứa ít nhất 1 chữ thường!";
+    }
+
+    if (!/[0-9]/.test(password)) {
+        return "Mật khẩu phải chứa ít nhất 1 chữ số!";
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        return "Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt!";
+    }
+
+    return "Hợp lệ";
+}
+
+function danhGiaDoManh(password) {
+    if (password.length === 8) {
+        return "Yếu";
+    } else if (password.length < 12) {
+        return "Trung bình";
+    } else {
+        return "Mạnh";
+    }
+}
+
+// Lặp cho đến khi nhập đúng
+while (true) {
+    let password = prompt("Nhập mật khẩu:");
+
+    let ketQua = kiemTraMatKhau(password);
+
+    if (ketQua === "Hợp lệ") {
+        let doManh = danhGiaDoManh(password);
+        alert("Mật khẩu hợp lệ! Độ mạnh: " + doManh);
+        break;
+    } else {
+        alert(ketQua);
+    }
+}
+</script>
+
+</body>
+</html>
